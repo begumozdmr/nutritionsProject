@@ -9,8 +9,7 @@ export default function Contact() {
       <section className='container'>
         <div className='row'>
           <div className='page__header__comment page__header__comment--content'>
-
-            <div className='grid-3'>
+            <div className='grid-4'>
               <div className='cards cards--grey cards--grey__contact'>
                 <div className='theme__button theme__button--circular'>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-pin" width="50" height="50" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -20,7 +19,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h1>Our Location</h1>
-                <p>The Queen's Walk, Bishop's, London SE1 7PB, United Kingdom</p>
+                <p>The Queen's Walk, London SE1 7PB, UK</p>
               </div>
 
               <div className='cards cards--grey cards--grey__contact'>
@@ -44,6 +43,18 @@ export default function Contact() {
                 </div>
                 <h1>Mail Us</h1>
                 <p>info@nitritionist.com</p>
+              </div>
+
+              <div className='cards cards--grey cards--grey__contact'>
+                <div className='theme__button theme__button--circular'>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-instagram" width="50" height="50" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M16.5 7.5l0 .01" />
+                  </svg>
+                </div>
+                <h1>Instgram Us</h1>
+                <p>nitritionist</p>
               </div>
             </div>
           </div>
@@ -78,7 +89,7 @@ export default function Contact() {
       </section>
 
       <section>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.2007760588945!2d32.74246607640698!3d39.86974038874877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347acc4350fa9%3A0x22720cefb175c933!2sBilkent%20CYBERPARK!5e0!3m2!1str!2str!4v1700392692121!5m2!1str!2str" width="100%" height="250" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.2007760588945!2d32.74246607640698!3d39.86974038874877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347acc4350fa9%3A0x22720cefb175c933!2sBilkent%20CYBERPARK!5e0!3m2!1str!2str!4v1700392692121!5m2!1str!2str" width="100%" height="250" loading="lazy" style={{ overflow: "hidden" }}></iframe>
       </section>
     </>
   )
