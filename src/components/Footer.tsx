@@ -1,7 +1,11 @@
-import React from 'react'
+import { ContextProvider } from 'context/contextProvider';
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
+
+  const { handleLinkClick } = useContext(ContextProvider);
+
   return (
     <footer className='footer__container'>
       <div className='container'>
@@ -10,7 +14,7 @@ export default function Footer() {
             <div className='grid-4 grid-4--footer'>
               <div className='footer__comment'>
                 <div className='navbar__logo'>
-                  <Link to="/">
+                  <Link to="/" onClick={() => handleLinkClick(1)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-plant-2" width="60" height="60" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <defs>
                         <linearGradient id="myGradient" gradientTransform="rotate(45)">
@@ -83,16 +87,16 @@ export default function Footer() {
 
               <div className='footer__comment'>
                 <h3>Quick Link</h3>
-                <Link to="">
+                <Link to="/" onClick={() => handleLinkClick(1)}>
                   Home
                 </Link>
-                <Link to="/about">
+                <Link to="/about" onClick={() => handleLinkClick(2)}>
                   About Us
                 </Link>
-                <Link to="/contact">
+                <Link to="/contact" onClick={() => handleLinkClick(3)}>
                   Contact Us
                 </Link>
-                <Link to="/login">
+                <Link to="/login" onClick={() => handleLinkClick(4)}>
                   Login
                 </Link>
               </div>

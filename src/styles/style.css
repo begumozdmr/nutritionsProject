@@ -68,6 +68,7 @@ body {
     width: 100%;
     list-style-type: none;
     overflow-x: hidden;
+    transition: all 0.4s ease-in-out;
 }
 
 .swiper {
@@ -121,11 +122,12 @@ img {
 /* NAVBAR CSS START */
 .navbar__container {
     display: flex;
-    position: relative;
     align-items: center;
     background: var(--color-background);
     border-bottom: 1px solid var(--color-secondary);
     height: 92px;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
 }
 
 .navbar__content {
@@ -288,7 +290,6 @@ img {
 }
 
 /* NAVBAR CSS END */
-
 
 /* HOME PAGE CSS START */
 .page__content {
@@ -982,7 +983,6 @@ h3 {
 
     .icon-tabler-menu-2 {
         display: flex;
-        color: var(--color-background);
     }
 
     .navbar__title {
@@ -1019,7 +1019,6 @@ h3 {
 
     .icon-tabler-menu-2 {
         display: flex;
-        color: var(--color-background);
     }
 
     .navbar__title {

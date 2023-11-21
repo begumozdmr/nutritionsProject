@@ -10,9 +10,18 @@ interface DarkThemeControl {
 
 type SetDarkThemeControl = (darkThemeControl: DarkThemeControl) => void;
 
+interface ActiveIndex {
+    activeIndex: number;
+};
+
+type SetActiveIndex = (activeIndex: ActiveIndex) => void;
+
 export type Type = {
     darkThemeControl: DarkThemeControl;
     setDarkThemeControl: SetDarkThemeControl;
+    activeIndex: ActiveIndex;
+    setActiveIndex: SetActiveIndex;
+    handleLinkClick: (index: number) => void;
 };
 
 export const ContextProvider = createContext<Type>({} as Type);
@@ -20,6 +29,7 @@ export const ContextProvider = createContext<Type>({} as Type);
 export const ContextProviders = ({ children }: ContextProps) => {
 
     const [darkThemeControl, setDarkThemeControl] = useState<DarkThemeControl>({ darkThemeControl: false });
+    const [activeIndex, setActiveIndex] = useState<ActiveIndex>({ activeIndex: 1 });
 
     const darkThemeFunction = () => {
         let prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -47,12 +57,17 @@ export const ContextProviders = ({ children }: ContextProps) => {
         }
     };
 
+    const handleLinkClick = (index: number) => {
+        setActiveIndex({ activeIndex: index === activeIndex.activeIndex ? 0 : index });
+    };
+
     useEffect(() => {
         darkThemeFunction();
     });
 
     const data = {
-        setDarkThemeControl, darkThemeControl
+        setDarkThemeControl, darkThemeControl,
+        activeIndex, setActiveIndex, handleLinkClick
     };
 
     return (

@@ -1,7 +1,11 @@
-import React from 'react';
+import { ContextProvider } from 'context/contextProvider';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function SignUp() {
+
+  const { handleLinkClick } = useContext(ContextProvider);
+
   return (
     <>
       <section className='full__width__background'>
@@ -16,7 +20,7 @@ export default function SignUp() {
 
                 <div className='login__page__footer__container'>
                   <button type='submit' className='subscribe__button subscribe__button--black'>Sign Up</button>
-                  <Link to="/login">
+                  <Link to="/login" onClick={() => handleLinkClick(4)}>
                     Do you have an account ?
                   </Link>
                 </div>

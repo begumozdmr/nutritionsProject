@@ -38,14 +38,9 @@ const navbarLinksData: DataType[] = [
 
 export default function Navbar() {
 
-  const [activeIndex, setActiveIndex] = useState<number | null>(1);
   const [searchContainerActive, setSearchContainerActive] = useState<boolean>(false);
   const [responsiveMenu, setresponsiveMenu] = useState<boolean>(false);
-  const { darkThemeControl, setDarkThemeControl } = useContext(ContextProvider);
-
-  const handleLinkClick = (index: number) => {
-    setActiveIndex(index === activeIndex ? null : index);
-  };
+  const { darkThemeControl, setDarkThemeControl, activeIndex, handleLinkClick } = useContext(ContextProvider);
 
   const handleSearchContainer = () => {
     setSearchContainerActive(!searchContainerActive);
@@ -95,7 +90,7 @@ export default function Navbar() {
             {
               navbarLinksData.map((index: { id: number, path: string, name: string }) => {
                 return (
-                  <li className={`navbar__item navbar__item--link ${index.id === activeIndex ? "active" : ""}`} key={index.id}>
+                  <li className={`navbar__item navbar__item--link ${index.id === activeIndex.activeIndex ? "active" : ""}`} key={index.id}>
                     <Link to={index.path} onClick={() => handleLinkClick(index.id)}>{index.name}</Link>
                   </li>
                 )
@@ -139,7 +134,7 @@ export default function Navbar() {
           {
             navbarLinksData.map((index: { id: number, path: string, name: string }) => {
               return (
-                <li className={`navbar__item navbar__item--responsive__menu ${index.id === activeIndex ? "active" : ""}`} key={index.id}>
+                <li className={`navbar__item navbar__item--responsive__menu ${index.id === activeIndex.activeIndex ? "active" : ""}`} key={index.id}>
                   <Link to={index.path} onClick={() => handleLinkClick(index.id)}>{index.name}</Link>
                 </li>
               )
