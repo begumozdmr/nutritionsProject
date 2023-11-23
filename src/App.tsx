@@ -1,15 +1,27 @@
 
 import Footer from 'components/Footer';
 import Navbar from 'components/Navbar';
-import React from 'react';
+import PageLoad from 'components/PageLoad';
+import { ContextProvider } from 'context/contextProvider';
+import React, { useContext } from 'react';
 import Router from 'router/Router';
 
 function App() {
+
+  const { pageLoad } = useContext(ContextProvider);
   return (
     <>
-      <Navbar />
-      <Router />
-      <Footer />
+      {
+        pageLoad.pageLoad ?
+          <PageLoad />
+          :
+          <>
+            <Navbar />
+            <Router />
+            <Footer />
+
+          </>
+      }
     </>
   );
 }

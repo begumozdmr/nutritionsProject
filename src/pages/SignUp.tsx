@@ -1,10 +1,54 @@
+import { gql } from '@apollo/client';
 import { ContextProvider } from 'context/contextProvider';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/react-hooks';
+
+const SIGNUP__USERS = gql`
+  mutation CreateUsers($input: CreateUsers!) {
+   createUsers(input: $input) {
+    id
+    nameSurname
+    email
+    password
+    token
+    usersDate
+  }
+}
+`;
 
 export default function SignUp() {
 
-  const { handleLinkClick } = useContext(ContextProvider);
+  const { handleLinkClick, setCreateUser, createUser } = useContext(ContextProvider);
+  const [error, setError] = React.useState<boolean>(false);
+
+  let randomToken = require('random-token').create('abcdefghijklmnopqrstuvwxzyABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+  let randomID = require('random-token').create('123456789');
+
+  // const InputControlFunction = () => {
+  //   setError(true);
+  // };
+
+  const [clickCreateUser] = useMutation(SIGNUP__USERS, {
+    variables: {
+      input: {
+        id: Number(randomID(5)),
+        nameSurname: createUser.nameSurname,
+        email: createUser.email,
+        password: createUser.password,
+        token: randomToken(32),
+        usersDate: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + (new Date().getFullYear())
+      }
+    },
+    onCompleted: () => {
+      window.location.href = "http://localhost:3000/login";
+      handleLinkClick(4);
+    }
+  });
+
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setCreateUser({ ...createUser, [event.target.name]: event.target.value })
+  };
 
   return (
     <>
@@ -15,11 +59,13 @@ export default function SignUp() {
               <h4 className='content__header content__header--white'>SIGN UP</h4>
 
               <div className='contact__area contact__area--width'>
-                <input type='text' name='email' placeholder='Your Email' className='contact__email'></input>
-                <input type='password' name='password' placeholder='Your Password' className='contact__password'></input>
+                <span className={`error__message ${error ? "active" : ""}`}>Please Do Not Leave Fields Blank</span>
+                <input type='text' name='nameSurname' placeholder='Your Name And Surname' className={`contact__name ${error ? "error" : ""}`} value={createUser.nameSurname as string || ""} onChange={handleChangeInput}></input>
+                <input type='text' name='email' placeholder='Your Email' className={`contact__email ${error ? "error" : ""}`} value={createUser.email as string || ""} onChange={handleChangeInput}></input>
+                <input type='password' name='password' placeholder='Your Password' className={`contact__password ${error ? "error" : ""}`} value={createUser.password as string || ""} onChange={handleChangeInput}></input>
 
                 <div className='login__page__footer__container'>
-                  <button type='submit' className='subscribe__button subscribe__button--black'>Sign Up</button>
+                  <button type='submit' className='subscribe__button subscribe__button--black' onClick={() => clickCreateUser()}>Sign Up</button>
                   <Link to="/login" onClick={() => handleLinkClick(4)}>
                     Do you have an account ?
                   </Link>

@@ -5,6 +5,7 @@ import Login from 'pages/Login';
 import SignUp from 'pages/SignUp';
 import { Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
+import Profil from 'pages/Profil';
 
 export default function Router() {
     return (
@@ -14,6 +15,7 @@ export default function Router() {
             <Route path="/contact" element={<Contact />}>Contact</Route>
             <Route path="/login" element={<Login />}>Login</Route>
             <Route path="/signUp" element={<SignUp />}>Sign Up</Route>
+            <Route path="/profil/:id" element={<Profil />}>Profil</Route>
         </Routes>
     )
 }
