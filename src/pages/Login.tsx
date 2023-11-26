@@ -17,7 +17,7 @@ mutation Login($email: String!, $password: String!) {
 `
 export default function Login() {
 
-  const { handleLinkClick, setLoginUsers, loginUsers, setUsersControl, setUsersInformation } = useContext(ContextProvider);
+  const { handleLinkClick, setLoginUsers, loginUsers, setUsersControl, setUsersInformation, setPageLoad } = useContext(ContextProvider);
   const navigate = useNavigate();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -35,6 +35,7 @@ export default function Login() {
       navigate(`/profil/${login.id}`);
       setUsersControl({ usersControl: false });
       setUsersInformation({ id: login.id, nameSurname: login.nameSurname });
+      setPageLoad({ pageLoad: true });
     }
   });
 

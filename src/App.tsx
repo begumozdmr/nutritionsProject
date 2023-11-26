@@ -8,7 +8,22 @@ import Router from 'router/Router';
 
 function App() {
 
-  const { pageLoad } = useContext(ContextProvider);
+  const { pageLoad, setPageLoad } = useContext(ContextProvider);
+
+  React.useEffect(() => {
+
+    const pageLoadControl = () => {
+      setPageLoad({ pageLoad: true });
+    }
+
+    window.addEventListener('popstate', pageLoadControl);
+
+    return () => {
+      window.removeEventListener('popstate', pageLoadControl);
+    };
+
+  }, []);
+
   return (
     <>
       {
@@ -19,7 +34,6 @@ function App() {
             <Navbar />
             <Router />
             <Footer />
-
           </>
       }
     </>

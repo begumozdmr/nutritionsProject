@@ -564,59 +564,64 @@ export default function About() {
           </div>
         </div>
         <div className='references__container'>
-          <Swiper
-            slidesPerView={5}
-            spaceBetween={30}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            className="mySwiper"
-            modules={[Autoplay]}
-            breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-              },
-              575: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 5,
-                spaceBetween: 30,
-              },
-            }}
-          >
-            <SwiperSlide>
-              <img src={require("../img/1.png")} alt='reference__1' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/2.png")} alt='reference__2' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/3.png")} alt='reference__3' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/4.png")} alt='reference__4' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/5.png")} alt='reference__5' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/1.png")} alt='reference__1' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/3.png")} alt='reference__3' className='reference__image'></img>
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={require("../img/5.png")} alt='reference__5' className='reference__image'></img>
-            </SwiperSlide>
-          </Swiper>
+          <div className='container'>
+            <div className='row'>
+              <Swiper
+                slidesPerView={4}
+                spaceBetween={30}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                className="mySwiper"
+                modules={[Autoplay]}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                  },
+                  575: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                  },
+                }}
+              >
+                <SwiperSlide>
+                  <img src={require("../img/1.png")} alt='reference__1' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/2.png")} alt='reference__2' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/3.png")} alt='reference__3' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/4.png")} alt='reference__4' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/5.png")} alt='reference__5' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/1.png")} alt='reference__1' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/3.png")} alt='reference__3' className='reference__image'></img>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={require("../img/5.png")} alt='reference__5' className='reference__image'></img>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+          </div>
+
         </div>
       </section>
     </main>

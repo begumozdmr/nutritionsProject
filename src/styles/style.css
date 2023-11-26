@@ -26,6 +26,7 @@
     --font-size--60: 60px;
     --font-size--70: 70px;
     --color-background: #ffffff;
+    --color-white: #ffffff;
     --color-background2: #fafafa;
     --color-background3: #f8f8f8;
     --color-background4: #f8f8f8;
@@ -43,6 +44,7 @@
     --color-paragraph2: #808080;
     --color-span: #ababab;
     --color-list: #999;
+    --color-list2: #999;
 }
 
 html[data-theme="dark"] {
@@ -56,6 +58,7 @@ html[data-theme="dark"] {
     --color-secondary: #303030;
     --color-secondary2: #808080;
     --color-background4: #222222;
+    --color-list2: #303030;
 }
 
 body {
@@ -115,6 +118,7 @@ a {
 
 img {
     max-width: 100%;
+    width: 100%;
     height: auto;
     vertical-align: middle;
 }
@@ -266,6 +270,7 @@ img {
     background: var(--color-background2);
     border: 1px solid var(--color-secondary);
     padding: 15px;
+    z-index: 555;
 }
 
 .navbar__item>a:hover {
@@ -344,9 +349,9 @@ img {
     border: 1px solid var(--color-green);
 }
 
-.users__dropdown.active>hr {
-    width: 100%;
-    border: 1px solid var(--color-heading);
+.users__dropdown.active>span {
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid var(--color-span);
 }
 
 .users__menu__dropdown__content {
@@ -358,10 +363,11 @@ img {
     align-items: end;
     transition: all 0.4s ease-in-out;
     border-radius: 8px;
+    color: var(--color-heading);
 }
 
 .users__menu__dropdown__content:hover {
-    background:var(--color-green);
+    background: var(--color-green);
     transition: all 0.4s ease-in-out;
     color: var(--color-background3);
 }
@@ -420,7 +426,7 @@ img {
 }
 
 .icon-tabler-plant-2 {
-    color: white;
+    color: var(--color-white);
 }
 
 .header__comment {
@@ -433,11 +439,18 @@ img {
     justify-content: start;
 }
 
+.container__background.container__background--about.details__page {
+    padding: 0 100px 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .purchase__button {
     width: 170px;
     height: 50px;
     background: var(--color-green);
-    color: white;
+    color: var(--color-white);
     font-weight: var(--text-weight--500);
     font-size: var(--font-size--20);
     border-radius: 25px;
@@ -463,6 +476,10 @@ img {
 
 .content__header.content__header--white {
     color: var(--color-heading4);
+}
+
+.content__header.content__header--black {
+    color: #222222;
 }
 
 .user__guide {
@@ -506,6 +523,7 @@ img {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
+    width: 100%;
 }
 
 .grid-4.grid-4--footer {
@@ -520,12 +538,22 @@ img {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
+    width: 100%;
+}
+
+.grid-2.grid-2__gap {
+    gap: 30px;
+}
+
+.grid-2.grid-2__nowrap{
+    gap: 0;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+    width: 100%;
 }
 
 .content__header.content__header--comment {
@@ -588,6 +616,17 @@ img {
     background: var(--color-background);
 }
 
+.cards--profil {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
 .cards--doctor {
     background-image: url("../img/doctor__background.jpg");
     display: flex;
@@ -609,7 +648,7 @@ img {
     letter-spacing: 0.1em;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 10px;
 }
 
@@ -760,9 +799,14 @@ h3 {
     height: var(--font-size--36);
     background: var(--color-background3);
     cursor: pointer;
+    border-radius: 50%;
+    border: transparent;
 }
 
 .theme__button--footer>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--color-green);
 }
 
@@ -778,7 +822,7 @@ h3 {
 }
 
 .subscribe {
-    border-radius: 7px;
+    border-radius: 10px;
     padding: 13px;
     width: 220px;
     border: none;
@@ -791,7 +835,7 @@ h3 {
 }
 
 .subscribe__button {
-    border-radius: 7px;
+    border-radius: 10px;
     padding: 10px;
     width: 120px;
     outline: none;
@@ -918,7 +962,7 @@ h3 {
     letter-spacing: 0.1em;
     width: 140px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all 0.4s ease-in-out;
 }
 
@@ -939,6 +983,14 @@ h3 {
     padding: 25px;
 }
 
+.references__container.references__container--black {
+    background: var(--color-secondary2);
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .reference__image {
     width: 90%;
     height: 90%;
@@ -949,6 +1001,27 @@ h3 {
 
 .reference__image:hover {
     opacity: 1;
+}
+
+.subscribe__button.subscribe__button--black.subscribe__button--calculate {
+    width: auto;
+    letter-spacing: 0.2em;
+}
+
+.login__page__footer__container>a.profil__details {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--color-heading4);
+    color: var(--color-white);
+    font-size: var(--font-size--16);
+    letter-spacing: 0.1em;
+    transition: all 0.4s ease-in-out;
+}
+
+.login__page__footer__container>a.profil__details:hover {
+    background: var(--color-list);
+    color: var(--color-white);
+    transition: all 0.4s ease-in-out;
 }
 
 /* ABOUT PAGE CSS END */
@@ -1083,6 +1156,217 @@ h3 {
 /* LOGIN PAGE / SIGN UP PAGE CSS END */
 
 
+/* PROFIL PAGE CSS START */
+.cards__content__number {
+    font-size: var(--font-size--36);
+    font-weight: var(--text-weight--600);
+    color: var(--color-heading);
+    opacity: 0.5;
+    transition: all 0.4s ease-in-out;
+}
+
+.cards__content__media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards__content__icon {
+    margin-top: 2px;
+    top: -20px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--color-background3);
+    color: var(--color-green);
+    z-index: 5;
+}
+
+.cards__content__services {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 13px;
+}
+
+.cards__content__services>h5 {
+    font-size: var(--font-size--24);
+    color: var(--color-heading);
+}
+
+.cards__content__services>p {
+    font-weight: var(--text-weight--400);
+    font-size: var(--font-size--18);
+    letter-spacing: 0.1em;
+    color: var(--color-paragraph);
+}
+
+.profil__image {
+    transition: all 0.4s ease-in-out;
+    border-radius: 5px;
+}
+
+.cards__content__image {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+.cards--profil:hover>.cards__content__number {
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+}
+
+.cards--profil:hover>.cards__content__media>.cards__content__image>.profil__image {
+    transform: scale(1.2);
+    background-position: center;
+    background-size: cover;
+    transition: all 0.4s ease-in-out;
+}
+
+.cards--profil:hover>.cards__content__media>.cards__content__icon {
+    background: var(--color-green);
+    color: var(--color-background3);
+    transition: all 0.4s ease-in-out;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size--32);
+    font-weight: var(--text-weight--500);
+    letter-spacing: 0.1em;
+}
+
+.table__container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+#users {
+    border-collapse: collapse;
+    width: 100%;
+    background: var(--color-background3);
+}
+
+#users td,
+#users th {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    font-size: var(--font-size--16);
+}
+
+#users tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+#users tr:hover {
+    background: rgb(127, 184, 45, 0.1);
+}
+
+#users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    letter-spacing: 0.1em;
+}
+
+.table__pagination {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.pagination__item,
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: var(--font-size--36);
+    height: var(--font-size--36);
+    cursor: pointer;
+    border: 1px solid var(--color-green);
+    color: var(--color-green);
+    font-size: var(--font-size--16);
+    font-weight: var(--text-weight--500);
+    background: var(--color-background2);
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+}
+
+.pagination__item.active {
+    background: var(--color-green);
+    color: var(--color-white);
+    transition: all 0.4s ease-in-out;
+}
+
+.pagination {
+    padding: 8px 15px 8px 15px;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    align-items: center;
+    height: auto;
+}
+
+.pagination:hover {
+    color: var(--color-green);
+    background: rgb(127, 184, 45, 0.1);
+    border: 1px solid var(--color-green);
+}
+
+.progressbar__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+}
+
+.progressbar__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.progress__bar {
+    position: relative;
+    width: 100%;
+    background: var(--color-secondary);
+    height: 10px;
+    border-radius: 10px;
+}
+
+.progressbar__header>span {
+    font-size: var(--font-size--18);
+    color: var(--color-heading);
+}
+
+.progress__bar--green {
+    position: absolute;
+    background-color: #7FB82D;
+    height: 10px;
+    border-radius: 10px;
+}
+
+/* PROFIL PAGE CSS START */
+
+
 @media (max-width:575px) {
     .grid-4 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1090,6 +1374,10 @@ h3 {
 
     .grid-2 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .grid-2.grid-2__gap{
+        gap: 0px;
     }
 
     .icon-tabler-menu-2 {
@@ -1152,6 +1440,10 @@ h3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
+    .grid-2.grid-2__gap{
+        gap: 0px;
+    }
+
     .login__page__footer__container {
         flex-direction: column;
     }
@@ -1191,6 +1483,10 @@ h3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
+    .grid-2.grid-2__gap{
+        gap: 0px;
+    }
+
     .login__page__footer__container {
         flex-direction: row;
     }
@@ -1212,6 +1508,10 @@ h3 {
 
     .grid-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-2.grid-2__gap{
+        gap: 30px;
     }
 
     .theme__button.theme__button--menu {

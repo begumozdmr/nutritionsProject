@@ -6,6 +6,7 @@ import SignUp from 'pages/SignUp';
 import { Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import Profil from 'pages/Profil';
+import Details from 'pages/Details';
 
 export default function Router() {
     return (
@@ -16,6 +17,7 @@ export default function Router() {
             <Route path="/login" element={<Login />}>Login</Route>
             <Route path="/signUp" element={<SignUp />}>Sign Up</Route>
             <Route path="/profil/:id" element={<Profil />}>Profil</Route>
+            <Route path="/details" element={<Details />}>Profil</Route>
         </Routes>
     )
 }
