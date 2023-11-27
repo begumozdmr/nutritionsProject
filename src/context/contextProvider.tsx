@@ -121,7 +121,7 @@ export const ContextProviders = ({ children }: ContextProps) => {
     useEffect(() => {
         darkThemeFunction();
         pageLoadFunction();
-    });
+    },);
 
     const data = {
         setDarkThemeControl, darkThemeControl,

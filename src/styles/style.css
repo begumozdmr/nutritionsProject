@@ -239,7 +239,7 @@ img {
     align-items: center;
     gap: 15px;
     color: var(--color-heading);
-    border: 1px solid var(--color-green);
+    border: 1px solid var(--color-span);
     box-shadow: 0px 15px 30px 0px rgba(0, 33, 85, 0.1);
 }
 
@@ -346,7 +346,7 @@ img {
     gap: 5px;
     border-radius: 10px;
     padding: 15px;
-    border: 1px solid var(--color-green);
+    border: 1px solid var(--color-span);
 }
 
 .users__dropdown.active>span {
@@ -545,7 +545,7 @@ img {
     gap: 30px;
 }
 
-.grid-2.grid-2__nowrap{
+.grid-2.grid-2__nowrap {
     gap: 0;
 }
 
@@ -608,8 +608,6 @@ img {
 
 .cards {
     margin-top: 40px;
-    width: 90%;
-    height: 100%;
     padding: 25px;
     border-radius: 15px;
     margin-bottom: 35px;
@@ -628,23 +626,24 @@ img {
 }
 
 .cards--doctor {
-    background-image: url("../img/doctor__background.jpg");
+    background-image: url("../img/dcotor__background.jpg");
     display: flex;
     background-position: center;
     background-size: cover;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 13px;
 }
 
 .appointment__button {
     position: relative;
     outline: none;
-    background: transparent;
+    background: var(--color-green);
     border: transparent;
     font-size: var(--font-size--16);
     font-weight: var(--text-weight--500);
-    color: var(--color-heading);
+    color: var(--color-white);
     letter-spacing: 0.1em;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
@@ -653,8 +652,8 @@ img {
 }
 
 .appointment__button:hover {
-    background: var(--color-green);
-    color: var(--color-background3);
+    background: var(--color-white);
+    color: var(--color-green);
 }
 
 .cards>p {
@@ -679,22 +678,21 @@ img {
 
 .users__image {
     width: 70px;
-    height: 70px;
+    height:70px;
     border-radius: 50%;
     background: linear-gradient(45deg, rgb(202, 248, 128) 0%, rgb(113, 206, 126) 100%);
     color: var(--color-background2);
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.users__image>img {
+.users__image--doctor>img {
+    border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 50%;
-    max-width: 100px;
+    width: 100px;
     height: 100px;
 }
 
@@ -711,7 +709,7 @@ img {
 .doctor__comment {
     display: flex;
     flex-direction: row;
-    gap: 25px;
+    gap: 15px;
 }
 
 .customers__comment__header {
@@ -801,6 +799,37 @@ h3 {
     cursor: pointer;
     border-radius: 50%;
     border: transparent;
+}
+
+.theme__button--details {
+    position: relative;
+    width: var(--font-size--50);
+    height: var(--font-size--50);
+    background: var(--color-green);
+    border-radius: 50%;
+    border: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    font-size: var(--font-size--22);
+    margin-bottom: 30px;
+    flex: none;
+}
+
+.theme__button--details::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 80px;
+    background: var(--color-green);
+    position: absolute;
+    z-index: 0;
+    top: 50px;
+}
+
+.theme__button--details__end:after {
+    height: 0px;
 }
 
 .theme__button--footer>a {
@@ -992,8 +1021,6 @@ h3 {
 }
 
 .reference__image {
-    width: 90%;
-    height: 90%;
     cursor: pointer;
     opacity: 0.5;
     transition: all 0.4s ease-in-out;
@@ -1001,6 +1028,7 @@ h3 {
 
 .reference__image:hover {
     opacity: 1;
+    transform: scale(1.05);
 }
 
 .subscribe__button.subscribe__button--black.subscribe__button--calculate {
@@ -1031,6 +1059,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
 }
 
 .contact__area.contact__area--width {
@@ -1072,7 +1101,7 @@ h3 {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease-in-out;
-    font-size: var(--font-size--18);
+    font-size: var(--font-size--20);
 }
 
 .error__message.active {
@@ -1126,7 +1155,7 @@ h3 {
 }
 
 .full__width__background--page__load {
-    background: var(--color-secondary2);
+    background: var(--color-secondary);
     width: 100%;
     height: 100%;
     display: flex;
@@ -1250,32 +1279,44 @@ h3 {
     width: 100%;
 }
 
-#users {
+#users,
+#meeting {
     border-collapse: collapse;
     width: 100%;
     background: var(--color-background3);
 }
 
 #users td,
-#users th {
+#users th,
+#meeting td,
+#meeting th {
     border: 1px solid #ddd;
     padding: 15px;
-    text-align: left;
+    text-align: center;
     font-size: var(--font-size--16);
+    width: 46%;
 }
 
-#users tr:nth-child(even) {
+#meeting td,
+#meeting th {
+    padding: 8px;
+}
+
+#users tr:nth-child(even),
+#meeting tr:nth-child(even) {
     background: #f2f2f2;
 }
 
-#users tr:hover {
+#users tr:hover,
+#meeting tr:hover {
     background: rgb(127, 184, 45, 0.1);
 }
 
-#users th {
+#users th,
+#meeting th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: var(--color-green);
     color: var(--color-white);
     letter-spacing: 0.1em;
@@ -1290,7 +1331,8 @@ h3 {
 }
 
 .pagination__item,
-.pagination {
+.pagination,
+.change__button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1307,13 +1349,18 @@ h3 {
     transition: all 0.4s ease-in-out;
 }
 
+.change__button {
+    background: var(--color-white);
+}
+
 .pagination__item.active {
     background: var(--color-green);
     color: var(--color-white);
     transition: all 0.4s ease-in-out;
 }
 
-.pagination {
+.pagination,
+.change__button {
     padding: 8px 15px 8px 15px;
     display: flex;
     justify-content: center;
@@ -1322,7 +1369,8 @@ h3 {
     height: auto;
 }
 
-.pagination:hover {
+.pagination:hover,
+.change__button:hover {
     color: var(--color-green);
     background: rgb(127, 184, 45, 0.1);
     border: 1px solid var(--color-green);
@@ -1347,7 +1395,7 @@ h3 {
 .progress__bar {
     position: relative;
     width: 100%;
-    background: var(--color-secondary);
+    background: var(--color-secondary2);
     height: 10px;
     border-radius: 10px;
 }
@@ -1364,6 +1412,30 @@ h3 {
     border-radius: 10px;
 }
 
+.details__information {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--color-heading4);
+}
+
+.details__information.details__information--content {
+    text-align: left;
+    gap: 5px;
+}
+
+.information__content {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: start;
+    align-items: center;
+}
+
+.information__head {
+    font-size: var(--font-size--22);
+}
+
 /* PROFIL PAGE CSS START */
 
 
@@ -1376,7 +1448,7 @@ h3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
-    .grid-2.grid-2__gap{
+    .grid-2.grid-2__gap {
         gap: 0px;
     }
 
@@ -1440,7 +1512,7 @@ h3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
-    .grid-2.grid-2__gap{
+    .grid-2.grid-2__gap {
         gap: 0px;
     }
 
@@ -1483,7 +1555,7 @@ h3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
-    .grid-2.grid-2__gap{
+    .grid-2.grid-2__gap {
         gap: 0px;
     }
 
@@ -1510,7 +1582,7 @@ h3 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .grid-2.grid-2__gap{
+    .grid-2.grid-2__gap {
         gap: 30px;
     }
 

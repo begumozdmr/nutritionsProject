@@ -21,13 +21,15 @@ export default function SignUp() {
 
   const { handleLinkClick, setCreateUser, createUser } = useContext(ContextProvider);
   const [error, setError] = React.useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = React.useState<string>("");
 
   let randomToken = require('random-token').create('abcdefghijklmnopqrstuvwxzyABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
   let randomID = require('random-token').create('123456789');
 
-  // const InputControlFunction = () => {
-  //   setError(true);
-  // };
+  const ErrorMessageFunction = (value: string) => {
+    setError(true);
+    setErrorMessage(value);
+  };
 
   const [clickCreateUser] = useMutation(SIGNUP__USERS, {
     variables: {
@@ -38,6 +40,17 @@ export default function SignUp() {
         password: createUser.password,
         token: randomToken(32),
         usersDate: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + (new Date().getFullYear())
+      }
+    },
+    onError: (error) => {
+      if (error.message.includes('Email is already in use.')) {
+        ErrorMessageFunction('Email is already in use.');
+      }
+      else if (error.message.includes('Please fill in all fields.')) {
+        ErrorMessageFunction('Please fill in all fields.');
+      }
+      else if (error.message.includes('Your password cannot be less than 8 characters.')) {
+        ErrorMessageFunction('Your password cannot be less than 8 characters.');
       }
     },
     onCompleted: () => {
@@ -59,10 +72,10 @@ export default function SignUp() {
               <h4 className='content__header content__header--white'>SIGN UP</h4>
 
               <div className='contact__area contact__area--width'>
-                <span className={`error__message ${error ? "active" : ""}`}>Please Do Not Leave Fields Blank</span>
-                <input type='text' name='nameSurname' placeholder='Your Name And Surname' className={`contact__name ${error ? "error" : ""}`} value={createUser.nameSurname as string || ""} onChange={handleChangeInput}></input>
-                <input type='text' name='email' placeholder='Your Email' className={`contact__email ${error ? "error" : ""}`} value={createUser.email as string || ""} onChange={handleChangeInput}></input>
-                <input type='password' name='password' placeholder='Your Password' className={`contact__password ${error ? "error" : ""}`} value={createUser.password as string || ""} onChange={handleChangeInput}></input>
+                <span className={`error__message ${error ? "active" : ""}`}>{errorMessage}</span>
+                <input type='text' name='nameSurname' placeholder='* Your Name And Surname' className={`contact__name ${error ? "error" : ""}`} value={createUser.nameSurname as string || ""} onChange={handleChangeInput}></input>
+                <input type='text' name='email' placeholder='* Your Email' className={`contact__email ${error ? "error" : ""}`} value={createUser.email as string || ""} onChange={handleChangeInput}></input>
+                <input type='password' name='password' placeholder='* Your Password' className={`contact__password ${error ? "error" : ""}`} value={createUser.password as string || ""} onChange={handleChangeInput}></input>
 
                 <div className='login__page__footer__container'>
                   <button type='submit' className='subscribe__button subscribe__button--black' onClick={() => clickCreateUser()}>Sign Up</button>

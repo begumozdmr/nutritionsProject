@@ -13,11 +13,49 @@ const CREATEBODYINDEX__MUTATION = gql`
   }
 `;
 
+
+interface InformationDataType {
+    id: number,
+    heading: string,
+    content: string
+}
+
+const InformationData: InformationDataType[] = [
+    {
+        id: 1,
+        heading: "< 18. 5",
+        content: "Below ideal weight"
+    },
+    {
+        id: 2,
+        heading: "18. 5 <bmi< 24. 9",
+        content: "At ideal weight"
+    },
+    {
+        id: 3,
+        heading: "25. 0 <bmi< 29. 9",
+        content: "Above ideal weight"
+    },
+    {
+        id: 4,
+        heading: "30. 0 <bmi< 39. 9",
+        content: "Excessively above ideal weight (Obese)"
+    },
+    {
+        id: 5,
+        heading: "> 40. 0",
+        content: "Way above ideal weight (Morbidly obese)"
+    }
+];
+
 export default function Profil() {
 
     const [bodyValue, setBodyValue] = React.useState({ height: "", weight: "" });
     const [calculate, setCalculate] = React.useState<string>("");
+    const [isCalculateUpdated, setIsCalculateUpdated] = React.useState<boolean>(false);
+
     let randomID = require('random-token').create('123456789');
+    const [error, setError] = React.useState<boolean>(false);
 
     const HandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setBodyValue({ ...bodyValue, [event.target.name]: event.target.value });
@@ -28,23 +66,34 @@ export default function Profil() {
             input: {
                 token: localStorage.getItem("token"),
                 id: Number(randomID(3)),
-                day: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + (new Date().getFullYear()),
+                day: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + (new Date().getFullYear()) + " " + new Date().getHours() + ":" + new Date().getMinutes(),
                 weight: Number(bodyValue.weight),
                 height: Number(bodyValue.height),
-                result: calculate
+                result: calculate.toString()
             }
         }
     });
 
-    const CalculateFunction = () => {
-        const weight = Number(bodyValue.weight);
-        const height = Number(bodyValue.height);
-        const heightInMeters = height / 100;
+    React.useEffect(() => {
+        if (isCalculateUpdated) {
+            clickBodyIndex();
+            setBodyValue({ height: "", weight: "" });
+            setError(false);
+            setIsCalculateUpdated(false);
+        }
+    }, [isCalculateUpdated]);
 
-        const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
-        setCalculate(String(bmi));
-        clickBodyIndex();
-        setBodyValue({ height: "", weight: "" });
+    const CalculateFunction = () => {
+        if (bodyValue.weight === "" || bodyValue.height === "") {
+            setError(true);
+        } else {
+            const weight = Number(bodyValue.weight);
+            const height = Number(bodyValue.height);
+            const heightInMeters = height / 100;
+            const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+            setCalculate(String(bmi));
+            setIsCalculateUpdated(true);
+        }
     };
 
     return (
@@ -129,16 +178,37 @@ export default function Profil() {
                     <div className='row'>
                         <div className='page__header__comment page__header__comment--content'>
                             <h4 className='content__header content__header--black'>Calculate Body Mask Index</h4>
-                            <div className='contact__area contact__area--width'>
-                                <input type='text' name='height' placeholder='Your Height (183)' className='contact__password' value={bodyValue.height as string || ""} onChange={HandleChangeInput}></input>
-                                <input type='text' name='weight' placeholder='Your Weight (67)' className='contact__email' value={bodyValue.weight as string || ""} onChange={HandleChangeInput}></input>
 
-                                <div className='login__page__footer__container'>
-                                    <button type='submit' className='subscribe__button subscribe__button--black subscribe__button--calculate' onClick={() => CalculateFunction()}>Calculate / Save</button>
+                            <div className='grid-2'>
+
+                                <div className='details__information'>
+                                    {
+                                        InformationData.map((index: { id: number, heading: string, content: string }) => {
+                                            return (
+                                                <div className='information__content' key={index.id}>
+                                                    <span className={`theme__button--details ${index.id === 5 ? "theme__button--details__end" : ""}`}>{index.id}</span>
+
+                                                    <div className='details__information details__information--content'>
+                                                        <span className='information__head'>{index.heading}</span>
+                                                        <p>{index.content}</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </div>
-                                {
-                                    calculate ? <span className='result'>Result : {calculate}</span> : null
-                                }
+
+                                <div className='contact__area'>
+                                    <input type='text' name='height' placeholder='* Your Height (183)' className={`contact__name ${error ? "error" : ""}`} value={bodyValue.height as string || ""} onChange={HandleChangeInput}></input>
+                                    <input type='text' name='weight' placeholder='* Your Weight (67)' className={`contact__password ${error ? "error" : ""}`} value={bodyValue.weight as string || ""} onChange={HandleChangeInput}></input>
+
+                                    <div className='login__page__footer__container'>
+                                        <button type='submit' className='subscribe__button subscribe__button--black subscribe__button--calculate' onClick={() => CalculateFunction()}>Calculate / Save</button>
+                                    </div>
+                                    {
+                                        calculate ? <span className='result'>Result : {calculate}</span> : null
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
