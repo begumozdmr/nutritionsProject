@@ -13,8 +13,9 @@ const typeDefs = `#graphql
 
   type MeetingTime{
     id:Int!,
-    day:String,
     nutritionName:String
+    day:String,
+    hour:String,
   }
 
   type Users {
@@ -82,6 +83,7 @@ const typeDefs = `#graphql
     login(input:InputLogin!):Login,
     token(token:String):Token,
     bodyIndex(input:CreateBodyIndex!):[UsersDetails],
+    addAppointment(id:Int,token:String,nutritionName:String, day:String,hour:String):[MeetingTime]
   }
 `;
 
@@ -154,17 +156,20 @@ let users = [
     meetingTime: [
       {
         id: 1,
-        day: "25.11.2023 10:45",
+        day: "25.11.2023",
+        hour: "10:45",
         nutritionName: "Danial Frankie"
       },
       {
         id: 2,
-        day: "26.11.2023 17.30",
+        day: "26.11.2023",
+        hour: "17.30",
         nutritionName: "Alena John"
       },
       {
         id: 3,
-        day: "28.11.2023 12.00",
+        day: "28.11.2023",
+        hour: "12.00",
         nutritionName: "Michal Smart"
       }
     ]
@@ -196,17 +201,20 @@ let users = [
     meetingTime: [
       {
         id: 1,
-        day: "25.11.2023 10:45",
+        day: "25.11.2023",
+        hour: "10:45",
         nutritionName: "Danial Frankie"
       },
       {
         id: 2,
-        day: "26.11.2023 17.30",
+        day: "26.11.2023",
+        hour: "17.30",
         nutritionName: "Alena John"
       },
       {
         id: 3,
-        day: "28.11.2023 12.00",
+        day: "28.11.2023",
+        hour: "12.00",
         nutritionName: "Michal Smart"
       }
     ]
@@ -284,6 +292,18 @@ const resolvers = {
       }
       user.usersDetails.push(newBodyIndex);
       return user.usersDetails;
+    },
+    addAppointment: (parent, { id, token, nutritionName, day, hour }) => {
+      const user = users.find((index) => index.token === token);
+      let newAppointment = {
+        id,
+        token,
+        nutritionName,
+        day,
+        hour
+      }
+      user.meetingTime.push(newAppointment);
+      return user.meetingTime;
     }
   }
 };

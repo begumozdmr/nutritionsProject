@@ -6,17 +6,18 @@ const TOKEN__MUTATION = gql`
 mutation Token($token: String) {
     token(token: $token) {
       id
+      meetingTime {
+        id
+        day
+        hour
+        nutritionName
+      }
       usersDetails {
         id
         day
         weight
         height
         result
-      }
-      meetingTime {
-        id
-        day
-        nutritionName
       }
     }
   }
@@ -33,6 +34,7 @@ interface UsersDetailsType {
 interface MeetingTimeType {
     id: number,
     day: string,
+    hour: string,
     nutritionName: string
 }
 
@@ -59,7 +61,6 @@ const ProgressBarData: ProgressBarType[] = [
         completed: "89%"
     },
 ];
-
 
 export default function Details() {
 
@@ -104,6 +105,10 @@ export default function Details() {
 
     const ChnagePages = (id: number) => {
         setCurrentPage(id);
+    };
+
+    const CancelTableFunction = (id: number) => {
+        setMeetingTime(meetingTime.filter((index) => index.id !== id));
     };
 
     return (
@@ -203,9 +208,10 @@ export default function Details() {
                                 <table id="meeting">
                                     <thead>
                                         <tr>
-                                            <th>Day</th>
                                             <th>Nutritionist Name</th>
-                                            <th>Change</th>
+                                            <th>Day</th>
+                                            <th>Hour</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -213,10 +219,12 @@ export default function Details() {
                                             meetingTime.map((index: MeetingTimeType) => {
                                                 return (
                                                     <tr key={index.id}>
-                                                        <td>{index.day}</td>
                                                         <td>{index.nutritionName}</td>
+                                                        <td>{index.day}</td>
+                                                        <td>{index.hour}</td>
+
                                                         <td>
-                                                            <button className="change__button">Change</button>
+                                                            <button className="cancel__button" onClick={() => CancelTableFunction(index.id)}>Delete</button>
                                                         </td>
                                                     </tr>
                                                 )
