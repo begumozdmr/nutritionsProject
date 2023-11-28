@@ -33,8 +33,6 @@ Write the following code instead of powershell in visual studio code application
 
 ## IMPORTANT ! <br>
 `NODE.JS MUST BE INSTALLED ON YOUR COMPUTER FOR THE PROJECT TO WORK. IF NOT INSTALLED, PLEASE INSTALL NODE.JS FROM THE LINK BELOW.`
-<<<<<<< HEAD
+
 ###### [NODE JS. INSTALLATION](https://nodejs.org/en)
-=======
-###### [NODE JS. INSTALLATION](https://nodejs.org/en)
->>>>>>> 42ca00ea8d00da745ead96518bdb7cf7a88050b0
+
