@@ -1571,6 +1571,16 @@ h3 {
     .contact__area.contact__area--width {
         width: 100%;
     }
+
+    .popup__content{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .popup__container{
+        width: 85%;
+        padding: 15px;
+    }
 }
 
 @media (min-width:576px) {
@@ -1609,6 +1619,10 @@ h3 {
 
     .contact__area.contact__area--width {
         width: 100%;
+    }
+
+    .popup__container{
+        width: auto;
     }
 }
 
