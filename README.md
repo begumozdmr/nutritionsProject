@@ -1,13 +1,36 @@
+## Project Features
+- Dark mode application that you can set according to the windows theme
+- User registration and login
+- Body mass index calculation
+- See detailed information on the detail page
+- See details about the site on the about page
 
-### `npm run start`
+## Running the Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### `Step 1:`
+First, copy the file link of the project from the githup site.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    https://github.com/begumozdmr/nutritionsProject.git
 
-### `npm run start apolloServer`
-cd apolloServer.\
-npm run start
+#### `Step 2:` 
+Open the cmd screen on your computer and type the following command.
 
+    git clone https://github.com/begumozdmr/nutritionsProject.git
+
+#### `Step 3:`
+When the file is downloaded to your computer, open your file from visual studio code application.
+
+#### `Step 4:` 
+Write the following code to run Apollo Server.
+
+    cd apolloServer
+    npm run start
+
+#### `Step 5:` 
+Write the following code instead of powershell in visual studio code application.
+
+    npm run start
+
+## IMPORTANT ! <br>
+`NODE.JS MUST BE INSTALLED ON YOUR COMPUTER FOR THE PROJECT TO WORK. IF NOT INSTALLED, PLEASE INSTALL NODE.JS FROM THE LINK BELOW.`
+###### [NODE JS. INSTALLATION](https://nodejs.org/en)
