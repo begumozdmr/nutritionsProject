@@ -13,6 +13,7 @@
     "@types/node": "^16.18.61",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "concurrently": "^8.2.2",
     "date-fns": "^2.30.0",
     "graphql": "^16.8.1",
     "random-token": "^0.0.8",
@@ -27,7 +28,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run start:react\" \"npm run start:apollo\"",
+    "start:react": "react-scripts start",
+    "start:apollo": "npm run compile && node apolloServer/dist/index.js",
+    "compile": "tsc",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

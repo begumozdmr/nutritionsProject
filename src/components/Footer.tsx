@@ -1,10 +1,45 @@
 import { ContextProvider } from 'context/contextProvider';
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+interface LinkType {
+  id: number,
+  path: string,
+  name: string
+};
+
+const LinkData: LinkType[] = [
+  {
+    id: 1,
+    path: "/",
+    name: "Home"
+  },
+  {
+    id: 2,
+    path: "/about",
+    name: "About Us"
+  },
+  {
+    id: 3,
+    path: "/contact",
+    name: "Contact Us"
+  },
+  {
+    id: 4,
+    path: "/login",
+    name: "Login"
+  }
+
+];
 
 export default function Footer() {
 
   const { handleLinkClick } = useContext(ContextProvider);
+
+  const handleClickScroll = (id: number) => {
+    window.scrollTo(0, 0);
+    handleLinkClick(id);
+  };
 
   return (
     <footer className='footer__container'>
@@ -87,18 +122,15 @@ export default function Footer() {
 
               <div className='footer__comment'>
                 <h3>Quick Link</h3>
-                <Link to="/" onClick={() => handleLinkClick(1)}>
-                  Home
-                </Link>
-                <Link to="/about" onClick={() => handleLinkClick(2)}>
-                  About Us
-                </Link>
-                <Link to="/contact" onClick={() => handleLinkClick(3)}>
-                  Contact Us
-                </Link>
-                <Link to="/login" onClick={() => handleLinkClick(4)}>
-                  Login
-                </Link>
+                {
+                  LinkData.map((index: LinkType) => {
+                    return (
+                      <Link to={index.path} onClick={() => handleClickScroll(index.id)} key={index.id}>
+                        {index.name}
+                      </Link>
+                    )
+                  })
+                }
               </div>
 
               <div className='footer__comment'>

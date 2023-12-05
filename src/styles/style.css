@@ -1516,7 +1516,7 @@ h3 {
     font-size: var(--font-size--16);
 }
 
-.subscribe__button.subscribe__button--contact.black.subscribe__button--width{
+.subscribe__button.subscribe__button--contact.black.subscribe__button--width {
     width: auto;
     height: auto;
     font-size: var(--font-size--14);
@@ -1572,12 +1572,12 @@ h3 {
         width: 100%;
     }
 
-    .popup__content{
+    .popup__content {
         flex-direction: column;
         width: 100%;
     }
 
-    .popup__container{
+    .popup__container {
         width: 85%;
         padding: 15px;
     }
@@ -1621,7 +1621,7 @@ h3 {
         width: 100%;
     }
 
-    .popup__container{
+    .popup__container {
         width: auto;
     }
 }

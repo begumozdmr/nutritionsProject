@@ -21,12 +21,6 @@ Open the cmd screen on your computer and type the following command.
 When the file is downloaded to your computer, open your file from visual studio code application.
 
 #### `Step 4:` 
-Write the following code to run Apollo Server.
-
-    cd apolloServer
-    npm run start
-
-#### `Step 5:` 
 Write the following code instead of powershell in visual studio code application.
 
     npm run start
